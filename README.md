@@ -2,6 +2,11 @@
 
 ### Para desenvolver o programa, é necessário: ###
 
+Instalar a lib Flask, ,com o comando:
+* pip3 install flask
+* pip3 install pyrebase
+* pip3 install pygame
+
 ### Se estiver no Windows ###
 
 * Abrir o Prompt do comando, e navegar até a pasta do projeto através dele (comando cd)
