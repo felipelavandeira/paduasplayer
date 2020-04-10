@@ -1,4 +1,4 @@
-# README #
+# INSTRUÇÕES #
 
 ### Para desenvolver o programa, é necessário: ###
 
