@@ -6,9 +6,9 @@
 {% endblock %}
 
 {% block main %}
-    <form name="form-login" action="" method="post">
-
+    <form name="form-login" action="/login" method="post">
+        <input type="email" name="email">
+        <input type="password" name="password">
+        <input type="submit" name="submit" value="Entrar" />
     </form>
-    <input type="email" name="email">
-    <input type="password" name="password">
 {% endblock %}
