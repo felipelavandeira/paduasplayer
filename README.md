@@ -1,9 +1,21 @@
-# Pádua's Player #
+# README #
 
-## Libs para utilização no projeto ##
-* Kivy [Link para download](https://kivy.org/#download)
+### Para desenvolver o programa, é necessário: ###
 
+### Se estiver no Windows ###
 
-## Estrutura do projeto ##
-* Para o desenvolvimento da comunicação com o Firebase (backend) por favor utilizar a pasta Controllers
-* Para o desenvolvimento das telas (frontend) por favor utilizar a pasta Views
+* Abrir o Prompt do comando, e navegar até a pasta do projeto através dele (comando cd)
+* Quando estiver na pasta raíz do projeto, rodar o seguinte comando:
+* * set FLASK_APP=main.py
+* Depois de configurar a variável de ambiente, utilizar o seguinte comando:
+* * python3 -m flask run
+* Seu projeto estará rodando no servidor de deploy, no endereço [http://localhost:5000](http://localhost:5000)
+
+### Se você estiver no Linux ###
+
+* Navegue até a pasta do projeto com o terminal
+* Digite o comando:
+* * export FLASK_APP=main.py
+* Depois de configurar a variável de ambiente, utilizar o seguinte comando:
+* * python3 -m flask run
+* Seu projeto estará rodando no servidor de deploy, no endereço [http://localhost:5000](http://localhost:5000)
