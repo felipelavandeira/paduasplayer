@@ -3,12 +3,50 @@
 
 {% block head %}
 {{ super() }}
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" type="application/javascript"></script>
 {% endblock %}
 
 {% block main %}
-    <form name="form-login" action="/login" method="post">
+    <form name="form-login" action="{{ url_for('login') }}" method="POST">
         <input type="email" name="email">
         <input type="password" name="password">
         <input type="submit" name="submit" value="Entrar" />
     </form>
+    <div style="margin-bottom: 300px;"></div>
+    <input type="button" value="Prev" id="prev" />
+    <input type="button" value="Play" id="play" />
+    <input type="button" value="Pausa" id="pause" style="display:none"/>
+    <input type="button" value="Next" id="next" />
+    <script>
+        $('#play').click( function(){
+            $.ajax({
+                url: '/play',
+                method: 'POST'
+            });
+            $(this).css('display', 'none');
+            $('#pause').removeAttr('style');
+        });
+
+        $('#pause').click( function(){
+            $.ajax({
+                url: '/pause',
+                method: 'POST'
+            });
+            $(this).val('Play');
+        });
+
+        $('#next').click( function(){
+            $.ajax({
+                url: '/next',
+                method: 'POST'
+            });
+        });
+
+        $('#prev').click( function(){
+            $.ajax({
+                url: '/prev',
+                method: 'POST'
+            });
+        });
+    </script>
 {% endblock %}

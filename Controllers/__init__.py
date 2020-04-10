@@ -13,7 +13,7 @@ firebaseConfig = {
     "appId": "1:588241417634:web:1e3114f5330869aeb42efb"
 }
 
-log_dir = os.path.abspath('../paduasplayer/log')
+log_dir = os.path.abspath('../paduasplayer/log/')
 
 firebase = pyrebase.initialize_app(firebaseConfig)
 

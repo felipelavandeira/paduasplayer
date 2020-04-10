@@ -10,7 +10,8 @@ class PlaylistController():
         print(self.playlist)
 
     def generatePlaylist(self):# Metodo que gera uma playlist a partir das musicas na pasta 'Musics'
-        self.playlist = os.listdir('Musics')
+        musicDir = os.path.abspath('./Controllers/Musics')
+        self.playlist = os.listdir(musicDir)
         print(self.playlist)
         pass
 
