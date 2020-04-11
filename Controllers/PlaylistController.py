@@ -5,6 +5,9 @@ class PlaylistController():
     def __init__(self):
         self.playlist = []
 
+    def getPlaylist(self):
+        return self.playlist
+
     def randomizePlaylist(self): #Metodo para randomizar lista
         random.shuffle(self.playlist)
         print(self.playlist)

@@ -15,6 +15,7 @@ class PlayerController:
     def setPlaylist(self, playlist=[]):
         self.playlist = playlist
 
+
     def verificaSongEnd(self):
         for event in pygame.event.get():
             if event.type == self.SONG_END:

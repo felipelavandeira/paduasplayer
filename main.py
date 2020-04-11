@@ -26,9 +26,9 @@ def login():
 
 @app.route('/play', methods=['POST'])
 def play():
-    playlist = PlaylistController()
-    playlist.generatePlaylist()
-    player.setPlaylist(playlist.playlist)
+    playlist = PlaylistController()#executar quando abrir a pagina do player, possivelmente mudar a rota
+    playlist.generatePlaylist()# same here ^
+    player.setPlaylist(playlist.playlist)# same here ^
     player.play()
     return 'Iniciando o player'
 
@@ -49,3 +49,27 @@ def next():
 def prev():
     player.anterior()
     return "Mudando de música"
+# ==================Rotas da Playlist=========================
+@app.route('/rand', methods=['POST'])
+def rand():
+    playlist.randomizePlaylist()
+    player.setPlaylist(playlist.getPlaylist())
+    return "Randomizando a Playlist"    
+
+@app.route('/clear', methods=['POST'])
+def clear():
+    playlist.clearPlaylist()
+    player.setPlaylist(playlist.getPlaylist())
+    return "Limpando a Playlist"
+
+@app.route('/add/<musica>', methods=['POST','GET'])    
+def add(musica:str):
+    playlist.addToPlaylist(musica)
+    player.setPlaylist(playlist.getPlaylist())
+    return "Adicionando a musica {} a playlist".format(musica)
+
+@app.route('/remove/<musica>', methods=['POST', 'GET'])    
+def remove(musica:str):
+    playlist.removeFromPlaylist(musica)
+    player.setPlaylist(playlist.getPlaylist())
+    return "Removendo a musica {} da playlist".format(musica)
