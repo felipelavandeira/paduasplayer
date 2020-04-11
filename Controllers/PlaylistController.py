@@ -19,5 +19,10 @@ class PlaylistController():
         self.playlist.clear()
         print(self.playlist)
 
-    def addToPlaylist(self, musica):#Metodo que Adiciona uma nova musica na Playlist
+    def removeFromPlaylist(self, musica: str):# Metodo que Remove uma musica da Playlist
+        self.playlist.remove(musica)
+        print(self.playlist)
+
+    def addToPlaylist(self, musica: str):# Metodo que Adiciona uma nova musica na Playlist
         self.playlist.append(musica)
+        print(self.playlist)
