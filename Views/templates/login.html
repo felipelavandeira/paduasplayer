@@ -17,6 +17,10 @@
     <input type="button" value="Play" id="play" />
     <input type="button" value="Pausa" id="pause" style="display:none"/>
     <input type="button" value="Next" id="next" />
+    <input type="button" value="Randomize" id="rand" />
+    <input type="button" value="Clear" id="clear" />
+    
+
     <script>
         $('#play').click( function(){
             $.ajax({
@@ -48,5 +52,18 @@
                 method: 'POST'
             });
         });
+        $('#rand').click( function(){
+            $.ajax({
+                url: '/rand',
+                method: 'POST'
+            });
+        });
+        $('#clear').click( function(){
+            $.ajax({
+                url: '/clear',
+                method: 'POST'
+            });
+        });
+        
     </script>
 {% endblock %}
