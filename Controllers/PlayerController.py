@@ -6,14 +6,19 @@ pygame.init()
 
 
 class PlayerController:
-    def __init__(self, playlist=[]):
+    def __init__(self, playlist: list = []):
         self.indexMusicaAtual = 0
-        self.playlist = playlist
+        self._playlist = playlist
         self.tocando = False
         self.SONG_END = pygame.USEREVENT + 1
 
-    def setPlaylist(self, playlist=[]):
-        self.playlist = playlist
+    @property
+    def playlist(self):
+        return self._playlist
+
+    @playlist.setter
+    def playlist(self, playlist=[]):
+        self._playlist = playlist
 
     def verificaSongEnd(self):
         for event in pygame.event.get():
@@ -21,7 +26,7 @@ class PlayerController:
                 self.proxima()
 
     def play(self):
-        musicDir = os.path.abspath('./Controllers/Musics')
+        musicDir = os.path.abspath('./musics')
         pygame.mixer_music.load(musicDir + '/' + self.playlist[self.indexMusicaAtual])
         pygame.mixer_music.play(1, 0.0)
         pygame.mixer.music.set_endevent(self.SONG_END)

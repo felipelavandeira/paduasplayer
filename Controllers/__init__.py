@@ -1,4 +1,5 @@
 from Controllers.LoggerController import LoggerController
+from Controllers.LoginController import LoginController
 import os
 import pyrebase
 

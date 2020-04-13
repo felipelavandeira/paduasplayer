@@ -1,34 +1,60 @@
-from flask import Flask
+from flask import Flask, redirect
 from flask import render_template
 from flask import request
+
 from Controllers import *
 from Controllers.LoginController import LoginController
 from Controllers.PlayerController import PlayerController
 from Controllers.PlaylistController import PlaylistController
 
 template_dir = os.path.abspath('./Views/templates')
-app = Flask(__name__, template_folder=template_dir)
+assets_dir = os.path.abspath('./Views/assets')
+app = Flask(__name__, template_folder=template_dir, static_folder=assets_dir)
 player = PlayerController()
+authentication = LoginController(firebase, logger)
 
 
 @app.route('/')
 def __index__():
-    return render_template('login.html')
+    if authentication.loggedUSer is not None:
+        return redirect('/player')
+    else:
+        return render_template('index.html')
+
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+
+@app.route('/createuser', methods=['POST'])
+def createUser():
+    logger.log("Cadastrando o usuário com e-mail {}".format(request.form['email']))
+    authentication.signUp(email=request.form['email'], password=request.form['password'])
+    return redirect('/player')
+
+
+@app.route('/player')
+def playerScreen():
+    if authentication.loggedUSer is not None:
+        logger.log("Usuário logado com id {}".format(authentication.loggedUSer))
+        return render_template('music.html')
+    else:
+        logger.log("Usuário não logado, redirecionando para o login")
+        return redirect('/')
 
 
 @app.route('/login', methods=['POST'])
 def login():
-    logger.log("Iniciando a tela de login para {}/{}".format(request.form['email'], request.form['password']))
-    authentication = LoginController()
     authentication.login(email=request.form['email'], password=request.form['password'])
-    return render_template('logged.html')
+    return redirect('/player')
 
 
 @app.route('/play', methods=['POST'])
 def play():
-    playlist = PlaylistController()
-    playlist.generatePlaylist()
-    player.setPlaylist(playlist.playlist)
+    playlistSet = PlaylistController()
+    playlist = playlistSet.generatePlaylist()
+    player.playlist = playlist
     player.play()
     return 'Iniciando o player'
 
@@ -49,3 +75,7 @@ def next():
 def prev():
     player.anterior()
     return "Mudando de música"
+
+@app.route('/teste')
+def teste():
+    return render_template('login.html')
