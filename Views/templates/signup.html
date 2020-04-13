@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}Registre-se{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block main %}
+	<div class="fadeIn first">
+		<img src="{{ url_for('static', filename='images/logo.png') }}" class="img-fluid" width="600" id="icon" alt="User Icon" />
+	</div>
+	<form name="form-signup" action="{{ url_for('createUser') }}" method="POST">
+		<h2 class="d-block">Cadastre-se</h2>
+		<input class="form-control" name="email" type="text" placeholder="Email">
+		<input class="form-control" name="password" type="password" placeholder="Senha">
+		<input type="submit" class="fadeIn fourth btn-lg" value="Cadastrar">
+	</form>
+{% endblock %}

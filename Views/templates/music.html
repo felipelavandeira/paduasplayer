@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}Player{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style_musica.css') }}">
+<script type="application/javascript" src="{{ url_for('static', filename='js/player.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+	<div class="row justify-content-center">
+    	<div class="col-6" ID="musica">
+      		<img src="{{ url_for('static', filename='images/iconfinder_music_103634.png')}}" alt="..." class="img-fluid" id="musica_img">
+    	</div>
+	</div>
+
+	<!--Fim Div Img musica -->
+	<!-- Inicio Reprodutor -->
+	<div class="row mx-5 p-5" id="reprodutor">
+		<div class="col px-4">
+			<img src="/assets/images/iconfinder_next_music_player_play_media_4593178.png" alt="..." class="img-fluid rounded-circle p-5" id="prev">
+		</div>
+		<div class="col px-4">
+			<img src="/assets/images/iconfinder_icon-play_211876.png" alt="..." class="img-fluid rounded-circle p-5" id="play" />
+		</div>
+		<div class="col px-4">
+			<img src="/assets/images/iconfinder_next_music_player_play_media_4593176.png" alt="..." class="img-fluid rounded-circle p-5" id="next">
+		</div>
+	</div>
+	<!-- Fim Reprodutor -->
+
+	<div class="container">
+		<div class="row rounded mt-3 px-5" id="aleatorio" align=" center">
+			<div class="col p-3">
+				<img src="{{ url_for('static', filename='images/iconfinder_music_add_103636.png')}}" alt="..." class="img-fluid" width="100" />
+			</div>
+			<div class="col p-3">
+				<img src="{{ url_for('static', filename='images/random.png')}}" alt="..." class="img-fluid" width="100" />
+			</div>
+			<div class="col p-3">
+				<img src="{{ url_for('static', filename='images/iconfinder_music_103634xx.png')}}" alt="..." class="img-fluid" width="100" />
+			</div>
+		</div>
+	</div>
+{% endblock %}

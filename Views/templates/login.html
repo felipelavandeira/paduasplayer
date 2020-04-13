@@ -3,7 +3,7 @@
 
 {% block head %}
 {{ super() }}
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js" type="application/javascript"></script>
+<script type="application/javascript" src="{{ url_for('static', filename='js/player.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -17,36 +17,4 @@
     <input type="button" value="Play" id="play" />
     <input type="button" value="Pausa" id="pause" style="display:none"/>
     <input type="button" value="Next" id="next" />
-    <script>
-        $('#play').click( function(){
-            $.ajax({
-                url: '/play',
-                method: 'POST'
-            });
-            $(this).css('display', 'none');
-            $('#pause').removeAttr('style');
-        });
-
-        $('#pause').click( function(){
-            $.ajax({
-                url: '/pause',
-                method: 'POST'
-            });
-            $(this).val('Play');
-        });
-
-        $('#next').click( function(){
-            $.ajax({
-                url: '/next',
-                method: 'POST'
-            });
-        });
-
-        $('#prev').click( function(){
-            $.ajax({
-                url: '/prev',
-                method: 'POST'
-            });
-        });
-    </script>
 {% endblock %}

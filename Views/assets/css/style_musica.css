@@ -1,0 +1,47 @@
+#musica_img{
+	background-color: rgba(255,255,255,0.5);
+	padding: 25px;
+	border-radius: 12px;
+}
+
+#retorna{
+	margin-top: 5%;
+	width: 50%;
+	height: 50%;
+}
+#retorna_img{
+	background-color: rgba(255,255,255,0.5);
+	border-radius: 12px;
+	padding: 15px;
+	width: 30%;
+	height: 3s0%;
+	border-radius: 100px;
+
+}
+#avanca{
+	margin-top: 5%;
+	width: 50%;
+	height: 50%;
+}
+#avanca_img{
+	background-color: rgba(255,255,255,0.5);
+	border-radius: 12px;
+	padding: 15px;
+	width: 30%;
+	height: 30%;
+	border-radius: 100px;
+
+}
+
+#reprodutor img{
+	background-color: rgba(255,255,255,0.5);
+}
+
+.rounded {
+	position: relative;
+	margin-top: 150px;
+}
+
+#aleatorio{
+	background-color: rgba(255,255,255,0.5);
+}
