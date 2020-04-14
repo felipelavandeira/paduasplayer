@@ -29,4 +29,4 @@ Instalar a lib Flask, ,com o comando:
 Basta criar na raíz do projeto a pasta *"musics"* e colocar suas músicas no formato .mp3 dentro dela
 
 # Para parar a reprodução  #
-Basta clicar no botão limpar playlist ![](https://github.com/felipelavandeira/paduasplayer/blob/master/Views/assets/images/iconfinder_music_103634xx.png)
+Basta clicar no botão limpar playlist ![](https://github.com/felipelavandeira/paduasplayer/blob/master/Views/assets/images/iconfinder_music_103634xx.png | width=100)
