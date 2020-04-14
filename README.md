@@ -2,10 +2,12 @@
 
 ### Para desenvolver o programa, é necessário: ###
 
-Instalar a lib Flask, ,com o comando:
+Instalar as lib's Flask, Pyrebase e Pygame com os comandos:
 * pip3 install flask
 * pip3 install pyrebase
 * pip3 install pygame
+
+*Dê preferência para um ambiente criado com o Anaconda*
 
 ### Se estiver no Windows ###
 
@@ -26,7 +28,7 @@ Instalar a lib Flask, ,com o comando:
 * Seu projeto estará rodando no servidor de deploy, no endereço [http://localhost:5000](http://localhost:5000)
 
 # Para ouvir as músicas #
-Basta criar na raíz do projeto a pasta *"musics"* e colocar suas músicas no formato .mp3 dentro dela
+Basta criar na raíz do projeto a pasta ***"musics"*** e colocar suas músicas no formato .mp3 dentro dela
 Com a pasta criada e com as músicas dentro dela, basta entrar no sistema e clicar em carregar playlist Basta clicar no botão carregar playlist <img src="https://github.com/felipelavandeira/paduasplayer/blob/master/Views/assets/images/iconfinder_music_add_103636.png" width="30" />
 
 # Para parar a reprodução  #
