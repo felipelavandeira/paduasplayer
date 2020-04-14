@@ -24,3 +24,9 @@ Instalar a lib Flask, ,com o comando:
 * Depois de configurar a variável de ambiente, utilizar o seguinte comando:
 * * python3 -m flask run
 * Seu projeto estará rodando no servidor de deploy, no endereço [http://localhost:5000](http://localhost:5000)
+
+# Para ouvir as músicas #
+Basta criar na raíz do projeto a pasta *"musics"* e colocar suas músicas no formato .mp3 dentro dela
+
+# Para parar a reprodução  #
+Basta clicar no botão limpar playlist ![](https://github.com/felipelavandeira/paduasplayer/blob/master/Views/assets/images/iconfinder_music_103634xx.png)
