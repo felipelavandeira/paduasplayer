@@ -18,28 +18,76 @@ jQuery( function($){
     $('#next').click( function(){
         $.ajax({
             url: '/next',
-            method: 'POST'
+            method: 'POST',
+            statusCode: {
+                500: function(){
+                    alert('Playlist vazia! Por favor clique no botão gerar');
+                    location.reload();
+                }
+            }
         });
     });
 
     $('#prev').click( function(){
         $.ajax({
             url: '/prev',
+            method: 'POST',
+            statusCode: {
+                500: function(){
+                    alert('Playlist vazia! Por favor clique no botão gerar');
+                    location.reload();
+                }
+            }
+        });
+    });
+
+    $('#random').click( function(){
+        $.ajax({
+            url: '/rand',
             method: 'POST'
         });
+        $('#play').removeClass('paused playing').trigger('click');
+    });
+
+    $('#generate').click( function(){
+        $.ajax({
+            url: '/generate',
+            method: 'POST'
+        });
+        $('#play').removeClass('paused playing').trigger('click');
+    });
+
+    $('#clear').click( function(){
+        $.ajax({
+            url: '/clear',
+            method: 'POST'
+        });
+        $('#play').removeClass('paused playing').attr('src', '/assets/images/iconfinder_icon-play_211876.png');
     });
 
     function playPause(){
         $.ajax({
             url: '/pause',
-            method: 'POST'
+            method: 'POST',
+            statusCode: {
+                500: function(){
+                    alert('Playlist vazia! Por favor clique no botão gerar');
+                    location.reload();
+                }
+            }
         });
     }
 
     function start(){
         $.ajax({
             url: '/play',
-            method: 'POST'
+            method: 'POST',
+            statusCode: {
+                500: function(){
+                    alert('Playlist vazia! Por favor clique no botão gerar');
+                    location.reload();
+                }
+            }
         });
     }
 });

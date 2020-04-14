@@ -12,6 +12,8 @@ assets_dir = os.path.abspath('./Views/assets')
 app = Flask(__name__, template_folder=template_dir, static_folder=assets_dir)
 player = PlayerController()
 authentication = LoginController(firebase, logger)
+playlistSet = PlaylistController()
+playlist = playlistSet.generatePlaylist()
 
 
 @app.route('/')
@@ -52,10 +54,11 @@ def login():
 
 @app.route('/play', methods=['POST'])
 def play():
-    playlistSet = PlaylistController()
-    playlist = playlistSet.generatePlaylist()
-    player.playlist = playlist
     player.play()
+    # Loop infinito é para que a reprodução não acabe
+    # após o fim da primeira música
+    while True:
+        player.verificaSongEnd()
     return 'Iniciando o player'
 
 
@@ -76,6 +79,26 @@ def prev():
     player.anterior()
     return "Mudando de música"
 
-@app.route('/teste')
-def teste():
-    return render_template('login.html')
+
+@app.route('/rand', methods=['POST'])
+def rand():
+    player.stop()
+    playlistSet.randomizePlaylist()
+    player.playlist = playlistSet.playlist
+    return "Randomizando a Playlist"
+
+
+@app.route('/generate', methods=['POST'])
+def generate():
+    player.stop()
+    generatedPlaylist = playlistSet.generatePlaylist()
+    player.playlist = generatedPlaylist
+    return "Gerando uma nova playlist"
+
+
+@app.route('/clear', methods=['POST'])
+def clear():
+    playlistSet.clearPlaylist()
+    player.playlist = playlistSet.playlist
+    player.stop()
+    return "Limpando a Playlist"

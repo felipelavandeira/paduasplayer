@@ -7,10 +7,10 @@ pygame.init()
 
 class PlayerController:
     def __init__(self, playlist: list = []):
-        self.indexMusicaAtual = 0
+        self._indexMusicaAtual = 0
         self._playlist = playlist
-        self.tocando = False
-        self.SONG_END = pygame.USEREVENT + 1
+        self._tocando = False
+        self._SONG_END = pygame.USEREVENT + 1
 
     @property
     def playlist(self):
@@ -22,39 +22,44 @@ class PlayerController:
 
     def verificaSongEnd(self):
         for event in pygame.event.get():
-            if event.type == self.SONG_END:
+            if event.type == self._SONG_END:
                 self.proxima()
 
     def play(self):
         musicDir = os.path.abspath('./musics')
-        pygame.mixer_music.load(musicDir + '/' + self.playlist[self.indexMusicaAtual])
+        pygame.mixer_music.load(musicDir + '/' + self._playlist[self._indexMusicaAtual])
         pygame.mixer_music.play(1, 0.0)
-        pygame.mixer.music.set_endevent(self.SONG_END)
-        self.tocando = True
-        logger.log("Iniciando a reprodução da música {}".format(self.playlist[self.indexMusicaAtual]))
+        pygame.mixer.music.set_endevent(self._SONG_END)
+        self._tocando = True
+        logger.log("Iniciando a reprodução da música {}".format(self._playlist[self._indexMusicaAtual]))
 
     def proxima(self):
-        if self.indexMusicaAtual + 2 <= len(self.playlist):
-            self.indexMusicaAtual = self.indexMusicaAtual + 1
+        if self._indexMusicaAtual + 2 <= len(self._playlist):
+            self._indexMusicaAtual = self._indexMusicaAtual + 1
         else:
-            self.indexMusicaAtual = 0
+            self._indexMusicaAtual = 0
         logger.log("Reproduzindo a próxima música")
         self.play()
 
     def anterior(self):
-        if self.indexMusicaAtual - 1 >= 0:
-            self.indexMusicaAtual = self.indexMusicaAtual - 1
+        if self._indexMusicaAtual - 1 >= 0:
+            self._indexMusicaAtual = self._indexMusicaAtual - 1
         else:
-            self.indexMusicaAtual = len(self.playlist) - 1
+            self._indexMusicaAtual = len(self._playlist) - 1
         logger.log("Reproduzindo a música anterior")
         self.play()
 
     def pause(self):
-        if self.tocando:
+        if self._tocando:
             pygame.mixer_music.pause()
-            self.tocando = False
-            logger.log("Pausando a reprodução da música {}".format(self.playlist[self.indexMusicaAtual]))
-        elif not self.tocando:
+            self._tocando = False
+            logger.log("Pausando a reprodução da música {}".format(self._playlist[self._indexMusicaAtual]))
+        elif not self._tocando:
             pygame.mixer_music.unpause()
-            self.tocando = True
-            logger.log("Retomando a reprodução da música {}".format(self.playlist[self.indexMusicaAtual]))
+            self._tocando = True
+            logger.log("Retomando a reprodução da música {}".format(self._playlist[self._indexMusicaAtual]))
+
+    def stop(self):
+        self._indexMusicaAtual = 0
+        logger.log("Parando a reprodução por completo")
+        pygame.mixer_music.stop()
