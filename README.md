@@ -27,6 +27,7 @@ Instalar a lib Flask, ,com o comando:
 
 # Para ouvir as músicas #
 Basta criar na raíz do projeto a pasta *"musics"* e colocar suas músicas no formato .mp3 dentro dela
+Com a pasta criada e com as músicas dentro dela, basta entrar no sistema e clicar em carregar playlist Basta clicar no botão carregar playlist <img src="https://github.com/felipelavandeira/paduasplayer/blob/master/Views/assets/images/iconfinder_music_add_103636.png" width="30" />
 
 # Para parar a reprodução  #
 Basta clicar no botão limpar playlist <img src="https://github.com/felipelavandeira/paduasplayer/blob/master/Views/assets/images/iconfinder_music_103634xx.png" width="30" />
