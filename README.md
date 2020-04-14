@@ -1,5 +1,7 @@
 # INSTRUÇÕES #
 
+[Link para o repositório do projeto](https://github.com/felipelavandeira/paduasplayer)
+
 ### Para desenvolver o programa, é necessário: ###
 
 Instalar as lib's Flask, Pyrebase e Pygame com os comandos:
